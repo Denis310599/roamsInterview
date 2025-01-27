@@ -18,10 +18,10 @@ def validate_dni(dni):
 
   try:
     if(len(dni) != 9):
-      raise("El DNI debe medir 9 caracteres")
+      raise Exception("El DNI debe medir 9 caracteres")
     
     if(dni[8].isalpha() == False):
-      raise("El DNI debe terminar en un numero")
+      raise Exception("El DNI debe terminar en un numero")
 
     final_dni = dni
 
@@ -66,8 +66,9 @@ class ClientSchema(Schema):
 
   @post_load
   def process_data(self, data, **kwargs):
-    #Make sure final letter is in UpperCase
+    #Make sure final letter is in UpperCase 
     data['dni'] = data['dni'][:8] + data['dni'][8].upper()
+    data['email'] = data['email'].lower()
     return data
 
 class SimulationSchema(Schema):

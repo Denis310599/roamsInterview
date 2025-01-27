@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>roamsInterview</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.configure({
+            tabReplace: '    ',
+        });
+        hljs.initHighlightingOnLoad();
+    </script>
+    <style>body {
+    position: relative;
+}
+
+h1 {
+    margin-top: 5px;
+}
+
+h1, h2, h3, h4 {
+    color: #2b2b2b;
+}
+
+h2:after {
+    content: ' ';
+}
+
+h5 {
+    font-weight: bold;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    display: none;
+    position: absolute;
+    margin-left: 8px;
+}
+
+h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
+    color: #a5a5a5;
+    display: initial;
+}
+
+.nav.nav-tabs > li > a {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tab-content {
+    padding-top: 8px;
+}
+
+.table {
+    margin-bottom: 8px;
+}
+
+pre {
+    border-radius: 0px;
+    border: none;
+}
+
+pre code {
+    margin: -9.5px;
+}
+
+.request {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.response-text-sample {
+    padding: 0px !important;
+}
+
+.response-text-sample pre {
+    margin-bottom: 0px;
+}
+
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #2b2b2b;
+    padding-top: 20px;
+}
+
+#sidebar-wrapper ul {
+    width: 250px;
+}
+
+#sidebar-wrapper ul li {
+    margin-right: 10px;
+}
+
+#sidebar-wrapper ul li a:hover {
+    background: inherit;
+    text-decoration: none;
+}
+
+#sidebar-wrapper ul li a {
+    display: block;
+    color: #ECF0F1;
+    padding: 6px 15px;
+}
+
+#sidebar-wrapper ul li ul {
+    padding-left: 25px;
+}
+
+#sidebar-wrapper ul li ul li a {
+    padding: 1px 0px;
+}
+
+#sidebar-wrapper ul li a:hover,
+#sidebar-wrapper ul li a:focus {
+    color: #e0c46c;
+    border-right: solid 1px #e0c46c;
+}
+
+#sidebar-wrapper ul li.active > a {
+    color: #e0c46c;
+    border-right: solid 3px #e0c46c;
+}
+
+#sidebar-wrapper ul li:not(.active) ul {
+    display: none;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px 15px 15px 250px;
+}
+</style>
+</head>
+<body data-spy="scroll" data-target=".scrollspy">
+<div id="sidebar-wrapper">
+    <div class="scrollspy">
+    <ul id="main-menu" data-spy="affix" class="nav">
+        <li>
+            <a href="#doc-general-notes">General notes</a>
+        </li>
+        
+        <li>
+            <a href="#doc-api-detail">API detail</a>
+        </li>
+        
+        <li>
+            <a href="#request-login">Login</a>
+        </li>
+        
+        <li>
+            <a href="#request-crear-cliente">Crear Cliente</a>
+        </li>
+        
+        <li>
+            <a href="#request-get-cliente">Get Cliente</a>
+        </li>
+        
+        <li>
+            <a href="#request-run-simulation">Run Simulation</a>
+        </li>
+        
+        <li>
+            <a href="#request-delte-cliente">Delte cliente</a>
+        </li>
+        
+        <li>
+            <a href="#request-actualizar-cliente">Actualizar cliente</a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+</div>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>roamsInterview</h1>
+
+                <h2 id="doc-general-notes">
+                    General notes
+                    <a href="#doc-general-notes"><i class="glyphicon glyphicon-link"></i></a>
+                </h2>
+
+                <p>Esta es una API desarrollada para la entrevista de Roams. Permite hacer simulaciones de hipotecas.</p>
+
+
+                
+
+                <h2 id="doc-api-detail">
+                    API detail
+                    <a href="#doc-api-detail"><i class="glyphicon glyphicon-link"></i></a>
+                </h2>
+
+                
+                
+                <div class="request">
+
+                    <h3 id="request-login">
+                        Login
+                        <a href="#request-login"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Inicia sesión en el sistema y devuelve un token que podrá utilizarse para acceder al resto de funciones.</p>
+
+<p>Parametros obligatorios:</p>
+
+<ul>
+<li><p>usuario</p></li>
+
+<li><p>contra</p></li>
+</ul>
+
+<p>El token devuelto deberá usarse como Bearer Token y deberá enviarse en la cabecera de la solicitud.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-login-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-login-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-login-example-curl">
+                                <pre><code class="hljs curl">curl -X POST -d '{
+    "usuario": "user",
+    "contra": "1234"
+}' "http://127.0.0.1:5000/user/login"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-login-example-http">
+                                <pre><code class="hljs http">POST /user/login HTTP/1.1
+Host: 127.0.0.1:5000
+
+{
+    "usuario": "user",
+    "contra": "1234"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-login-responses-2a2ee6fb-9eee-48f2-b403-a180f7b64828" data-toggle="tab">
+                                    
+                                    Login Satisfactorio
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-login-responses-b0512a64-1ddf-48d1-98c8-4c3f18ae1d19" data-toggle="tab">
+                                    
+                                    Login Erroneo Usuario inexistente
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-login-responses-9f97bd0d-8925-4ae3-a96d-bb90ff1a0eee" data-toggle="tab">
+                                    
+                                    Login Error Parametros
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-login-responses-2a2ee6fb-9eee-48f2-b403-a180f7b64828">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 12:51:52 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>347</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzk4MjMxMiwianRpIjoiYTc2ZGYzZDItYTVlZi00MTUyLWFiYTQtYzgzMmU5OGZkYzA2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InVzZXIiLCJuYmYiOjE3Mzc5ODIzMTIsImNzcmYiOiJjMjY3YTM5MS1hMTc1LTQyNzAtYWUyYS01ZWU2YmM2YTA0NGEiLCJleHAiOjE3Mzc5ODU5MTJ9.tpeg20594BWOHaaygDkWZIQXB8Ys0wnlgljstRWb_-E"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-login-responses-b0512a64-1ddf-48d1-98c8-4c3f18ae1d19">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 UNAUTHORIZED</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:23:01 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>102</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Combinación usuario y contraseña erróneos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-login-responses-9f97bd0d-8925-4ae3-a96d-bb90ff1a0eee">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>400 BAD REQUEST</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:56:41 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>73</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Error en los datos enviados"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-crear-cliente">
+                        Crear Cliente
+                        <a href="#request-crear-cliente"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Crea un nuevo cliente basado en los datos perosnales y financieros</p>
+
+<p>Parametros obligatorios:</p>
+
+<ul>
+<li><p>dni</p></li>
+
+<li><p>nombre</p></li>
+
+<li><p>email</p></li>
+
+<li><p>capital_solicitado</p></li>
+</ul>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-crear-cliente-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-crear-cliente-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-crear-cliente-example-curl">
+                                <pre><code class="hljs curl">curl -X POST -d '{
+    "dni": "32226717Z",
+    "nombre": "John Doe",
+    "email": "johnDoe@gmail.com",
+    "capital_solicitado": 50000
+}' "http://127.0.0.1:5000/clients"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-crear-cliente-example-http">
+                                <pre><code class="hljs http">POST /clients HTTP/1.1
+Host: 127.0.0.1:5000
+
+{
+    "dni": "32226717Z",
+    "nombre": "John Doe",
+    "email": "johnDoe@gmail.com",
+    "capital_solicitado": 50000
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-crear-cliente-responses-b3ff9aab-46d1-4f97-89ee-d348836fde05" data-toggle="tab">
+                                    
+                                    Creacion correcta
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-crear-cliente-responses-b50f59eb-f395-4ec0-83fd-f27a2d4896e9" data-toggle="tab">
+                                    
+                                    Creacion erronea
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-crear-cliente-responses-b3ff9aab-46d1-4f97-89ee-d348836fde05">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:23:37 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>53</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Cliente creado satisfactoriamente"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-crear-cliente-responses-b50f59eb-f395-4ec0-83fd-f27a2d4896e9">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>400 BAD REQUEST</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:24:03 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>77</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Los datos enviados son erroneos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-get-cliente">
+                        Get Cliente
+                        <a href="#request-get-cliente"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Obtiene la informacion de un cliente en caso de existir.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-get-cliente-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-get-cliente-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-get-cliente-example-curl">
+                                <pre><code class="hljs curl">curl -X GET "http://127.0.0.1:5000/clients/43394140V"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-get-cliente-example-http">
+                                <pre><code class="hljs http">GET /clients/43394140V HTTP/1.1
+Host: 127.0.0.1:5000</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-get-cliente-responses-81531c01-2b7b-471b-89e4-52dbc2ffda43" data-toggle="tab">
+                                    
+                                    Get Cliente Correcto
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-get-cliente-responses-e96ca244-e83d-49a2-8cae-4372f81a16fd" data-toggle="tab">
+                                    
+                                    Get Cliente Erroneo
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-get-cliente-responses-2a25417d-3c0d-4313-9aef-a6147d9a2354" data-toggle="tab">
+                                    
+                                    Get Cliente No Encontrado
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-get-cliente-responses-81531c01-2b7b-471b-89e4-52dbc2ffda43">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:08:31 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>119</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "capital_solicitado": 10000,
+    "dni": "43394140V",
+    "email": "rodrigo@gmail.com",
+    "nombre": "Rodrigo Perez"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-get-cliente-responses-e96ca244-e83d-49a2-8cae-4372f81a16fd">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>400 BAD REQUEST</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:30:12 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>73</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Error en los datos enviados"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-get-cliente-responses-2a25417d-3c0d-4313-9aef-a6147d9a2354">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>404 NOT FOUND</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:30:54 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>107</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. No se ha encontrado ningun cliente con los datos introducidos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-run-simulation">
+                        Run Simulation
+                        <a href="#request-run-simulation"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Realiza una simulación de hipoteca, dado un TAE y un plazo de amortización.</p>
+
+<p>Devuelve la cuota mensual a pagar y el importe total a devolver.</p>
+
+<p>Parametros obligatorios:</p>
+
+<ul>
+<li><p>TAE</p></li>
+
+<li><p>Plazo de amortización</p></li>
+</ul>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-run-simulation-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-run-simulation-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-run-simulation-example-curl">
+                                <pre><code class="hljs curl">curl -X POST -d '{
+    "tae": 2,
+    "plazo_amortizacion": 5
+}' "http://127.0.0.1:5000/clients/43394140V"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-run-simulation-example-http">
+                                <pre><code class="hljs http">POST /clients/43394140V HTTP/1.1
+Host: 127.0.0.1:5000
+
+{
+    "tae": 2,
+    "plazo_amortizacion": 5
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-run-simulation-responses-098c4bd1-be6f-4925-a904-cc90a1adb63e" data-toggle="tab">
+                                    
+                                    RunSimulation correcto
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-run-simulation-responses-f86e50ef-b808-4527-b0e4-86d24f7aaa47" data-toggle="tab">
+                                    
+                                    RunSimulation erroneo
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-run-simulation-responses-d7684fd8-09e2-4535-9f48-9a680bc0102d" data-toggle="tab">
+                                    
+                                    RunSimulation cliente inexistente
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-run-simulation-responses-098c4bd1-be6f-4925-a904-cc90a1adb63e">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:08:42 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>61</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "cuota_mensual": 175.28,
+    "importe_devolver": 10516.8
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-run-simulation-responses-f86e50ef-b808-4527-b0e4-86d24f7aaa47">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>400 BAD REQUEST</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:49:09 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>73</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Error en los datos enviados"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-run-simulation-responses-d7684fd8-09e2-4535-9f48-9a680bc0102d">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>404 NOT FOUND</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:54:25 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>107</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. No se ha encontrado ningun cliente con los datos introducidos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-delte-cliente">
+                        Delte cliente
+                        <a href="#request-delte-cliente"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Elimina un cliente del sistema en caso de existir.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-delte-cliente-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-delte-cliente-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-delte-cliente-example-curl">
+                                <pre><code class="hljs curl">curl -X DELETE "http://127.0.0.1:5000/clients/32226717Z"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-delte-cliente-example-http">
+                                <pre><code class="hljs http">DELETE /clients/32226717Z HTTP/1.1
+Host: 127.0.0.1:5000</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-delte-cliente-responses-9707abe1-85ae-4882-b754-9718b9ee8226" data-toggle="tab">
+                                    
+                                    Delte cliente correcto
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-delte-cliente-responses-f598a869-75de-449f-879c-7af1873be5af" data-toggle="tab">
+                                    
+                                    Delte cliente erroneo
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-delte-cliente-responses-7c1d1cf1-c72e-4ab0-852e-833592ecd10b" data-toggle="tab">
+                                    
+                                    Error bad parameters
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-delte-cliente-responses-9707abe1-85ae-4882-b754-9718b9ee8226">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:20:21 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>56</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Cliente eliminado satisfactoriamente"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-delte-cliente-responses-f598a869-75de-449f-879c-7af1873be5af">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>404 NOT FOUND</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:51:23 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>107</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. No se ha encontrado ningun cliente con los datos introducidos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-delte-cliente-responses-7c1d1cf1-c72e-4ab0-852e-833592ecd10b">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>400 BAD REQUEST</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:53:10 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>73</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Error en los datos enviados"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-actualizar-cliente">
+                        Actualizar cliente
+                        <a href="#request-actualizar-cliente"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Actualiza un cliente.</p>
+
+<p>Parametros obligatorios:</p>
+
+<ul>
+<li><p>nombre</p></li>
+
+<li><p>email</p></li>
+
+<li><p>capital_solicitado</p></li>
+</ul>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-actualizar-cliente-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-actualizar-cliente-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-actualizar-cliente-example-curl">
+                                <pre><code class="hljs curl">curl -X PATCH -d '{
+    "nombre": "Rodrigo Perez",
+    "email": "rodrigo@gmail.com",
+    "capital_solicitado": 15000.0
+}' "http://127.0.0.1:5000/clients/43394140V"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-actualizar-cliente-example-http">
+                                <pre><code class="hljs http">PATCH /clients/43394140V HTTP/1.1
+Host: 127.0.0.1:5000
+
+{
+    "nombre": "Rodrigo Perez",
+    "email": "rodrigo@gmail.com",
+    "capital_solicitado": 15000.0
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-actualizar-cliente-responses-1515f03a-ab82-4ca4-ba9a-52b1222da94f" data-toggle="tab">
+                                    
+                                    Actualizar cliente satisfactorio
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-actualizar-cliente-responses-db4c8c0c-5198-448e-8669-dafe0c639372" data-toggle="tab">
+                                    
+                                    Actualizar cliente datos erroneos
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-actualizar-cliente-responses-970f3b5a-22e3-4740-9cec-fba84416ca86" data-toggle="tab">
+                                    
+                                    Actualizar cliente inexistente
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-actualizar-cliente-responses-1515f03a-ab82-4ca4-ba9a-52b1222da94f">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:20:36 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>58</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Cliente actualizado satisfactoriamente"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-actualizar-cliente-responses-db4c8c0c-5198-448e-8669-dafe0c639372">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>400 BAD REQUEST</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:53:34 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>77</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. Los datos enviados son erroneos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-actualizar-cliente-responses-970f3b5a-22e3-4740-9cec-fba84416ca86">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>404 NOT FOUND</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Server</th><td>Werkzeug/3.1.3 Python/3.12.8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Mon, 27 Jan 2025 13:54:04 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>107</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>close</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "message": "Se ha producido un error. No se ha encontrado ningun cliente con los datos introducidos"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("table:not(.table)").addClass('table table-bordered');
+    });
+</script>
+</body>
+</html>

@@ -50,7 +50,7 @@ def get_client(data):
 
   except ValidationError as val_err:
     current_app.logger.warning('Error validando datos entrada: ' + data)
-    return {"error": True, "error_msg": "Error en los datos enviados. " + str(val_err), "error_code": 400}
+    return {"error": True, "error_msg": "Error en los datos enviados", "error_code": 400}
   
 def run_simulation(dni, data): 
   """Calculates a simulation for a given client and stores the result in the dataBase"""
@@ -78,8 +78,8 @@ def run_simulation(dni, data):
                                          "importe_devolver": calculated_simulation.importe_devolver}}
 
   except ValidationError as val_err:
-    current_app.logger.warning('Error validando datos entrada: ' + data)
-    return {"error": True, "error_msg": "Error en los datos enviados. " + str(val_err), "error_code": 400}
+    current_app.logger.warning('Error validando datos entrada: ' + str(data))
+    return {"error": True, "error_msg": "Error en los datos enviados", "error_code": 400}
 
 def calculate_simulation(capital, tae, plazo_amortizacion, dni):
     current_app.logger.debug("calculate_simulation(). Capital: " + str(capital) + ", tae: " + str(tae) + ", plazo amortizacion: " + str(plazo_amortizacion))
@@ -163,5 +163,5 @@ def delete_client(data):
 
   except ValidationError as val_err:
     current_app.logger.warning('Error validando datos entrada: ' + data)
-    return {"error": True, "error_msg": "Error en los datos enviados. " + str(val_err), "error_code": 400}
+    return {"error": True, "error_msg": "Error en los datos enviados", "error_code": 400}
 
