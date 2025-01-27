@@ -4,18 +4,17 @@ Este repositorio contiene el codigo corresponidente a una API Rest cuyo propósi
 
 
 ## Instrucciones de instalación
+##### 0. Clonación del repositorio
+Comenzamos por clonar el repositorio en nuetra máquina.
+
+    git clone https://github.com/Denis310599/roamsInterview.git
+    cd roamsInterview
 ##### 1. Instalación de dependencias
 Este proyecto ha sido desarrollado utilizando **python 3.12.8**. Utiliza una serie de librerías detalladas en requirements.txt. Para instalar las dependencias necesarias, ejecutar el siguiente comando:
 
-    pip install -r /requirements.txt
+    pip install -r ./requirements.txt
 
-##### 2. Crear la base de datos
-Esta api cuenta con una base de datos, haciendo uso de **SQLite**. Para crear y rellenar las tablas con información básica, se debe ejecutar el siguiente comando:
-
-    flask db create
-    flask db populate
-
-##### 3. Variables de entorno
+##### 2. Variables de entorno
 Será necesario crear una variable de entorno llamada **JWT_SECRET_KEY** necesaria para la autenticación. Esto se puede lograr de la siguiente forma:
 
     #Windows
@@ -23,6 +22,14 @@ Será necesario crear una variable de entorno llamada **JWT_SECRET_KEY** necesar
     
     #Linux
     export JWT_SECRET_KEY=my-very-secret-key
+
+##### 3. Crear la base de datos
+Esta api cuenta con una base de datos, haciendo uso de **SQLite**. Para crear y rellenar las tablas con información básica, se debe ejecutar el siguiente comando:
+
+    flask db create
+    flask db populate
+
+
 
 
 ## Uso de la API
