@@ -7,6 +7,6 @@ class UserSchema(Schema):
 
   @post_load
   def process_data(self, data, **kwargs):
-    #Make sure final letter is in UpperCase
+    #Make sure username is in LowerCase
     data['usuario'] = data['usuario'].lower()
     return data
